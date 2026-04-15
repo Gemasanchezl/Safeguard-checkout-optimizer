@@ -26,7 +26,7 @@ El proyecto se divide en capas de responsabilidad para demostrar una arquitectur
 
 ---
 
-## 📖 Cómo usar en la Demo
+## 📖 Cómo usar 
 
 1. **Escenario Base:** Abre el `index.html` original (el formulario que falla).
 2. **El Problema:** Muestra el archivo `INSIGHTS_USER_TEST.mdc` para explicar por qué perdemos clientes.
