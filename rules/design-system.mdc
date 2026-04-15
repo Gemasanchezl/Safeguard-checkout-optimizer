@@ -1,0 +1,49 @@
+---
+description: Tokens semánticos y componentes base del Design System Safeguard Digital. Úsalos siempre en archivos HTML y CSS.
+globs: ["**/*.html", "**/*.css"]
+alwaysApply: true
+---
+
+# Design System: Safeguard Digital
+
+Este documento contiene los tokens y componentes base para la interfaz de la aseguradora. El Agente debe priorizar siempre el uso de tokens semánticos sobre valores fijos para garantizar la consistencia visual.
+
+## 1. Core Tokens (Primitivos)
+- **Blue-Primary:** `#0055FF`
+- **Blue-Light-Accent:**#80CFFF
+- **Red-Alert:** `#FF3B30`
+- **Neutral-100:** `#F9FAFB`
+- **Neutral-900:** `#111827`
+- **White:** `#FFFFFF`
+
+## 2. Semantic Tokens (Capa Lógica)
+*Usa estos nombres para definir la intención del diseño en el código.*
+
+- **Surface-Background:** `@Neutral-100` (Fondo de página)
+- **Surface-Card:** `@White` (Fondo de formularios)
+- **Action-Primary:** `@Blue-Primary` (Botones y elementos activos)
+- **Action-Hover:** `@Purple-Accent` (Estados hover)
+- **Status-Error:** `@Red-Alert` (Bordes de input y textos de error)
+- **Text-Main:** `@Neutral-900` (Títulos y labels)
+- **Text-Helper:** `#6B7280` (Descripciones y placeholders)
+
+## 3. Shadow & Border Tokens
+- **Radius-M:** `12px` (Para inputs, botones y tarjetas)
+- **Shadow-Soft:** `0 4px 6px -1px rgba(0, 0, 0, 0.1)`
+
+## 4. Component Definition: Form Input
+*Estructura técnica requerida para los campos del checkout.*
+
+- **Container:** Border-radius `@Radius-M`, Border `1px solid #D1D5DB`.
+- **State Error:** Border `2px solid @Status-Error`.
+- **Label:** Font-size `14px`, Font-weight `600`, Color `@Text-Main`.
+- **Helper-Text:** Font-size `12px`, Color `@Text-Helper`.
+- **Error-Text:** Font-size `12px`, Color `@Status-Error`, Font-weight `500`.
+
+## 5. Component Definition: Button
+- **Style:** Background `@Action-Primary`, Color `@White`, Border-radius `@Radius-M`, Padding `12px 24px`.
+- **Transitions:** `0.3s ease-in-out` (Cambio suave a `@Action-Hover` en hover).
+
+## 6. Restricciones de Implementación
+- **Consistencia:** No utilizar valores hexadecimales que no estén mapeados en este documento.
+- **Accesibilidad:** Todos los mensajes de error deben ser legibles sobre el fondo `@Surface-Background`.

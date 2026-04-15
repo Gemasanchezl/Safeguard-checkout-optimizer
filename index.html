@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safeguard – Dirección de envío</title>
+  <style>
+    /* ── Core Tokens ─────────────────────────────────────────── */
+    :root {
+      --blue-primary:   #0055FF;
+      --purple-accent:  #8833FF;
+      --red-alert:      #FF3B30;
+      --neutral-100:    #F9FAFB;
+      --neutral-900:    #111827;
+      --white:          #FFFFFF;
+      --text-helper:    #6B7280;
+      --border-default: #D1D5DB;
+
+      /* Semantic Tokens */
+      --surface-background: var(--neutral-100);
+      --surface-card:       var(--white);
+      --action-primary:     var(--blue-primary);
+      --action-hover:       var(--purple-accent);
+      --status-error:       var(--red-alert);
+      --text-main:          var(--neutral-900);
+
+      /* Shadow & Border */
+      --radius-m:      12px;
+      --shadow-soft:   0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ── Reset & Base ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--surface-background);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* ── Card ────────────────────────────────────────────────── */
+    .card {
+      background: var(--surface-card);
+      border-radius: var(--radius-m);
+      box-shadow: var(--shadow-soft);
+      width: 100%;
+      max-width: 480px;
+      padding: 40px;
+    }
+
+    /* ── Header ──────────────────────────────────────────────── */
+    .card__logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .card__logo svg { flex-shrink: 0; }
+    .card__logo-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--action-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .card__title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .card__subtitle {
+      font-size: 14px;
+      color: var(--text-helper);
+      margin-bottom: 28px;
+    }
+
+    /* ── Progress ────────────────────────────────────────────── */
+    .progress {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .progress__step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-helper);
+    }
+    .progress__step--active { color: var(--action-primary); }
+    .progress__dot {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--neutral-100);
+      border: 1.5px solid var(--border-default);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 600; color: var(--text-helper);
+    }
+    .progress__dot--active {
+      background: var(--action-primary);
+      border-color: var(--action-primary);
+      color: var(--white);
+    }
+    .progress__dot--done {
+      background: var(--action-primary);
+      border-color: var(--action-primary);
+      color: var(--white);
+    }
+    .progress__line {
+      flex: 1; height: 1px;
+      background: var(--border-default);
+    }
+
+    /* ── Error Banner (intentionally generic) ────────────────── */
+    .error-banner {
+      display: none;
+      background: #FFF1F0;
+      border: 1px solid var(--status-error);
+      border-radius: var(--radius-m);
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--status-error);
+    }
+    .error-banner.visible { display: block; }
+
+    /* ── Form ────────────────────────────────────────────────── */
+    .form { display: flex; flex-direction: column; gap: 20px; }
+
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field--row { flex-direction: row; gap: 16px; }
+    .field--row .field { flex: 1; }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    input {
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-m);
+      padding: 11px 14px;
+      font-size: 15px;
+      color: var(--text-main);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    input::placeholder { color: var(--text-helper); }
+    input:focus {
+      border-color: var(--action-primary);
+      box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.12);
+    }
+
+    /* ── Button ──────────────────────────────────────────────── */
+    .btn {
+      background: var(--action-primary);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-m);
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease-in-out, transform 0.1s;
+      margin-top: 4px;
+    }
+    .btn:hover { background: var(--action-hover); }
+    .btn:active { transform: scale(0.99); }
+
+    /* ── Trust footer ────────────────────────────────────────── */
+    .trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--text-helper);
+    }
+    .trust svg { flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- Logo -->
+    <div class="card__logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="8" fill="#0055FF"/>
+        <path d="M14 6L20 10V15C20 18.3 17.3 21.2 14 22C10.7 21.2 8 18.3 8 15V10L14 6Z" fill="white"/>
+      </svg>
+      <span class="card__logo-name">Safeguard</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="card__title">Dirección de envío</h1>
+    <p class="card__subtitle">Indica dónde recibirás la documentación de tu póliza.</p>
+
+    <!-- Progress -->
+    <div class="progress">
+      <div class="progress__step progress__step--active">
+        <div class="progress__dot progress__dot--done">✓</div>
+        Tu póliza
+      </div>
+      <div class="progress__line"></div>
+      <div class="progress__step progress__step--active">
+        <div class="progress__dot progress__dot--active">2</div>
+        Dirección
+      </div>
+      <div class="progress__line"></div>
+      <div class="progress__step">
+        <div class="progress__dot">3</div>
+        Confirmación
+      </div>
+    </div>
+
+    <!-- ⚠️ INSIGHT FAILURE #3: Generic error banner, no field highlighting -->
+    <div class="error-banner" id="errorBanner">
+      Error: datos no válidos.
+    </div>
+
+    <!-- Form -->
+    <form class="form" id="checkoutForm" novalidate>
+
+      <!-- Name -->
+      <div class="field">
+        <label for="fullName">Nombre completo</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          placeholder="Ej. María García López"
+          autocomplete="name"
+        />
+      </div>
+
+      <!-- Address -->
+      <div class="field">
+        <label for="address">Dirección</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          placeholder="Calle, número, piso..."
+          autocomplete="street-address"
+        />
+      </div>
+
+      <!-- City + Postal Code -->
+      <div class="field field--row">
+        <div class="field">
+          <label for="city">Ciudad</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="Madrid"
+            autocomplete="address-level2"
+          />
+        </div>
+        <div class="field">
+          <label for="postalCode">Código postal</label>
+          <input
+            type="text"
+            id="postalCode"
+            name="postalCode"
+            placeholder="28001"
+            maxlength="5"
+            autocomplete="postal-code"
+          />
+        </div>
+      </div>
+
+      <!-- ⚠️ INSIGHT FAILURE #1: Phone trap — no prefix hint, no placeholder -->
+      <div class="field">
+        <label for="phone">Teléfono de contacto</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          autocomplete="tel"
+        />
+        <!-- No microcopy. No placeholder. No prefix hint. -->
+      </div>
+
+      <!-- ⚠️ INSIGHT FAILURE #4: Generic CTA, no trust microcopy -->
+      <button type="submit" class="btn" id="submitBtn">Continuar</button>
+
+    </form>
+
+    <!-- Trust signal (bottom) -->
+    <div class="trust">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+        <path d="M6.5 1L10 3.5V7C10 9.2 8.5 11.2 6.5 12C4.5 11.2 3 9.2 3 7V3.5L6.5 1Z" stroke="#6B7280" stroke-width="1.2" fill="none"/>
+      </svg>
+      Tus datos están protegidos con cifrado SSL
+    </div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById('checkoutForm');
+    const errorBanner = document.getElementById('errorBanner');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const fullName  = document.getElementById('fullName').value.trim();
+      const address   = document.getElementById('address').value.trim();
+      const city      = document.getElementById('city').value.trim();
+      const postalCode = document.getElementById('postalCode').value.trim();
+      const phone     = document.getElementById('phone').value.trim();
+
+      // ⚠️ INSIGHT FAILURE #1 + #2:
+      // Validation fires only on submit (no inline feedback).
+      // Phone MUST start with +34 and have 12 chars total — but user has no clue.
+      const phoneValid = /^\+34\d{9}$/.test(phone);
+      const allFilled  = fullName && address && city && postalCode && phone;
+
+      if (!allFilled || !phoneValid) {
+        // ⚠️ INSIGHT FAILURE #3:
+        // Generic banner appears at the top. No field is highlighted.
+        // User has no idea which field is wrong or why.
+        errorBanner.classList.add('visible');
+        errorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      // Success path (not the focus of this exercise)
+      errorBanner.classList.remove('visible');
+      alert('Formulario enviado correctamente.');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+# Reporte de Fricción: Checkout Form (Aseguradora Safeguard)
+
+## 📊 Métricas de Negocio
+- **Drop-off rate:** 40% de los usuarios abandonan en el paso de "Dirección de envío".
+- **Soporte:** El 15% de los tickets de ayuda mencionan problemas para "validar el formulario".
+
+---
+
+## 🔍 Hallazgos de los Test de Usuarios (Insights)
+
+### 1. El "Muro" del Teléfono
+- **Observación:** Los usuarios escriben su número (9 dígitos) y el sistema no reacciona. Al dar a enviar, el formulario se limpia o da un error genérico.
+- **Causa Raíz:** El sistema espera un formato internacional (`+34`) pero no hay ninguna pista visual que lo indique.
+- **Frustración:** El usuario siente que su teléfono "está bien" y que la web no funciona.
+
+### 2. Ansiedad por la Privacidad
+- **Observación:** Los usuarios dudan antes de meter el teléfono.
+- **Causa Raíz:** No se explica para qué queremos el dato. Temen recibir llamadas comerciales de la aseguradora.
+
+### 3. Validación "Post-Mortem"
+- **Observación:** Los usuarios rellenan todo el formulario y solo descubren los errores al final, tras pulsar el botón. 
+- **Impacto:** Esto genera fatiga cognitiva. El usuario prefiere cerrar la pestaña que volver a revisar 10 campos para buscar el fallo.
+
+---
+
+## 🎯 Objetivo de la Intervención
+Reducir la tasa de abandono eliminando la ambigüedad en el campo teléfono y mejorando el sistema de feedback en tiempo real.

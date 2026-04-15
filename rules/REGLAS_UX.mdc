@@ -1,0 +1,15 @@
+---
+description: Reglas de diseño y lógica para el Checkout de la Aseguradora
+globs: index.html, css/*.css
+---
+
+# Reglas de la Aseguradora
+
+## Convenciones de Diseño (Tokens)
+- **Error:** Siempre usar `#E10000` (Rojo Seguro).
+- **Tipografía:** Texto de error en 12px, peso regular.
+- **Bordes:** Inputs en error tienen borde de 2px sólido.
+
+## Convenciones de Lenguaje
+- No usar tecnicismos.
+- Ser directo: "Dinos tu teléfono" en lugar de "Es necesario que facilite un contacto".

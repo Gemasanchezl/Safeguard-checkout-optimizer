@@ -1,0 +1,38 @@
+# Skill: Protocolo de Optimización de Checkout
+
+Este protocolo define el estándar de actuación para resolver fricciones de usuario en el formulario de la aseguradora, garantizando el equilibrio entre la mejor experiencia (UX) y la viabilidad técnica.
+
+## 1. Fase de Análisis (Trigger)
+Al recibir los insights, el Agente debe auditar el archivo HTML buscando:
+- Falta de validación inline.
+- Ambigüedad en el campo teléfono (requisito de prefijo oculto).
+- CTAs genéricos que no generan confianza.
+
+## 2. Lógica de Decisión (Árbol de Orquestación)
+El Agente debe elegir una de las siguientes rutas según el contexto de la conversación:
+
+### [PLAN A] - Excelencia UX (Estrategia por Defecto)
+*Se aplica siempre, a menos que se indique una restricción técnica.*
+- **Acción:** Eliminar el requisito visual del prefijo +34.
+- **Configuración:** El campo debe aceptar exactamente 9 dígitos.
+- **Lógica:** El backend debe encargarse de la internacionalización de forma invisible.
+
+### [PLAN B] - Contingencia (Estrategia de Bloqueo)
+*Se activa solo ante palabras clave como "bloqueo", "backend" o "Plan B".*
+- **Acción:** Mantener el prefijo +34 obligatorio.
+- **Ayuda Visual:** Insertar un placeholder claro: `+34 XXX XXX XXX`.
+- **Microtexto:** Añadir nota aclaratoria: "El prefijo +34 es requerido por el sistema".
+
+## 3. Implementación obligatoria (Estándar Safeguard)
+Independientemente del plan elegido, se deben ejecutar estas mejoras:
+
+1. **Validación Inline (onBlur):** Activar el feedback visual en cuanto el usuario sale del campo, sin esperar al envío.
+2. **Sistema de Error:**
+   - Aplicar el token de color rojo definido en `@ux.mdc`.
+   - Añadir borde de 2px sólido al input en estado de error.
+3. **Microcopy de Confianza:** Añadir frase explicativa: "Te pedimos el teléfono solo para que el repartidor coordine la entrega de tu póliza".
+4. **CTA Descriptivo:** Cambiar el botón "Continuar" por "Confirmar dirección".
+5. Vincular estilos de error con los tokens de design-system.mdc
+
+## 4. Documentación de Salida
+Tras la edición del código, el Agente debe resumir los cambios en un archivo de "Mejoras Implementadas" que relacione cada cambio con un Insight específico del reporte.

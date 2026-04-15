@@ -1,0 +1,34 @@
+---
+description: Reglas globales del proyecto de optimización de Checkout. Se aplican siempre en este workspace.
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Proyecto: Checkout Optimizer - Aseguradora Safeguard
+
+Ejercicio didáctico para demostrar la toma de decisiones estratégica de un **Agent** usando **Skills** de negocio.
+
+## Contexto del proyecto
+Este proyecto optimiza el flujo de checkout de la aseguradora Safeguard basándose en insights de usuario. El objetivo es reducir el rebote mediante la mejora de formularios e implementación de micro-copy estratégico.
+
+## Reglas obligatorias
+
+### Lógica de Decisión (Plan A vs Plan B)
+- **PLAN A (Prioridad UX):** Se asume siempre como la ruta por defecto. Implica cambios que requieren coordinación con Backend (como eliminar prefijos).
+- **PLAN B (Contingencia):** Se activa **únicamente** cuando el usuario notifica una limitación técnica o bloqueo de desarrollo.
+- El Agente debe justificar por qué elige un plan u otro antes de ejecutar.
+
+### Estética (Design System)
+- **Colores de estado:**
+  - Error: `#E10000` (Rojo Safeguard).
+  - Éxito: `#28A745` (Verde Seguro).
+- **Componentes:** Los inputs en estado de error deben tener un borde de 2px sólido del color de error.
+
+### Nomenclatura y Archivos
+- El archivo principal de trabajo es `index.html`.
+- Si se genera un prototipo nuevo, usar `index-v2.html`, `index-v3.html`, etc., de forma consecutiva en la raíz.
+
+### Comunicación Didáctica
+- El Agente debe explicar en qué paso de la **Skill** se encuentra.
+- Tras realizar un cambio, debe resumir la mejora de UX conseguida (ej: "Se ha reducido la carga cognitiva eliminando el prefijo").
+- Si el usuario menciona "backend bloqueado", el Agente debe confirmar la transición al Plan B explícitamente.

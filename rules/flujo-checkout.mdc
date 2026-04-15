@@ -1,0 +1,22 @@
+---
+description: Reglas de orquestación para el flujo de optimización del checkout.
+globs: ["index.html", "AGENTS.md"]
+alwaysApply: true
+---
+
+# Reglas de Flujo: Checkout Optimizer
+
+Estas reglas aseguran que el Agente actúe con autonomía estratégica siguiendo la metodología de la orquestación.
+
+## Activación del Protocolo
+- Siempre que se mencione el archivo `index.html` o se llame al `@Agent`, Cursor debe validar automáticamente el estado del formulario frente a los `@INSIGHTS_USER_TEST.md`.
+- El Agente no debe esperar instrucciones paso a paso; su función es ejecutar la `@optimizar_checkout.md` de forma proactiva.
+
+## Prioridad de ejecución
+1. **Contexto:** Primero leer los problemas en Insights.
+2. **Estrategia:** Aplicar por defecto el **PLAN A** de la Skill.
+3. **Pivote:** Si el usuario menciona restricciones técnicas, cambiar inmediatamente al **PLAN B**.
+
+## Salida de datos (Output)
+- Cada modificación de código debe ir acompañada de una actualización o creación del archivo `DOCS.md`.
+- El tono de las explicaciones debe ser profesional y basado en métricas de conversión.
