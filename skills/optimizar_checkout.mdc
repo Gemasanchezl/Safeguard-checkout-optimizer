@@ -2,6 +2,14 @@
 
 Este protocolo define el estándar de actuación para resolver fricciones de usuario en el formulario de la aseguradora, garantizando el equilibrio entre la mejor experiencia (UX) y la viabilidad técnica.
 
+## 📢 Protocolo de Narración (Obligatorio)
+Para que el proceso sea didáctico y transparente, el Agente DEBE narrar cada paso en el chat antes de ejecutarlo en el código:
+
+1. **Notificar Inicio:** "🔍 Iniciando análisis de @index.html basado en @INSIGHTS_USER_TEST.mdc..."
+2. **Explicar Hallazgos:** "⚠️ He detectado que el campo de teléfono confunde al usuario. Procedo a aplicar el [PLAN A]..."
+3. **Reportar Estilos:** "🎨 Aplicando validaciones inline y tokens de error definidos en @design-system.mdc..."
+4. **Resumen Final:** "✅ Optimización completada. He generado index-v2.html y documentado las decisiones."
+
 ## 1. Fase de Análisis (Trigger)
 Al recibir los insights, el Agente debe auditar el archivo HTML buscando:
 - Falta de validación inline.
@@ -36,3 +44,6 @@ Independientemente del plan elegido, se deben ejecutar estas mejoras:
 
 ## 4. Documentación de Salida
 Tras la edición del código, el Agente debe resumir los cambios en un archivo de "Mejoras Implementadas" que relacione cada cambio con un Insight específico del reporte.
+
+
+

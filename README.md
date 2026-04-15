@@ -41,3 +41,11 @@ El proyecto se divide en capas de responsabilidad para demostrar una arquitectur
 Este proyecto pasó de ser un "prompter" a ser un **Orquestador de IA**:
 - No le decimos a la IA *qué* escribir.
 - Le damos las **reglas**, el **contexto** y las **skills** para que ella decida la mejor solución.
+
+---
+
+## 🎓 Recursos para Alumnos
+
+| Recurso | Descripción |
+| :--- | :--- |
+| [🎼 Arquitectura del Proyecto](skills/architecture.md) | Explicación visual de cómo funciona el sistema usando la analogía de una **Orquesta Filarmónica**: el Director (Agente), la Partitura (Skill), los Músicos (Rules) y la Acústica del Teatro (Insights). |
