@@ -10,7 +10,7 @@ Este documento contiene los tokens y componentes base para la interfaz de la ase
 
 ## 1. Core Tokens (Primitivos)
 - **Blue-Primary:** `#0055FF`
-- **Blue-Light-Accent:**#80CFFF
+- **Blue-Light-Accent:** `#80CFFF`
 - **Red-Alert:** `#FF3B30`
 - **Neutral-100:** `#F9FAFB`
 - **Neutral-900:** `#111827`
@@ -22,7 +22,7 @@ Este documento contiene los tokens y componentes base para la interfaz de la ase
 - **Surface-Background:** `@Neutral-100` (Fondo de página)
 - **Surface-Card:** `@White` (Fondo de formularios)
 - **Action-Primary:** `@Blue-Primary` (Botones y elementos activos)
-- **Action-Hover:** `@Purple-Accent` (Estados hover)
+- - **Action-Hover:**`@Blue-Light-Accent` (Estados hover)
 - **Status-Error:** `@Red-Alert` (Bordes de input y textos de error)
 - **Text-Main:** `@Neutral-900` (Títulos y labels)
 - **Text-Helper:** `#6B7280` (Descripciones y placeholders)
